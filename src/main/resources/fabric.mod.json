@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "bettercrafting",
+  "version": "1.0",
+  "name": "Better Crafting",
+  "description": "A simple mod making it easy to see how much items you are crafting.",
+  "authors": ["apelsin"],
+  "license": "GPL-3.0",
+  "icon": "assets/bettercrafting/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "org.apelsin.bettercrafting.client.BetterCraftingDataGenerator"
+    ],
+    "client": [
+      "org.apelsin.bettercrafting.client.BetterCraftingClient"
+    ],
+    "main": [
+      "org.apelsin.bettercrafting.BetterCrafting"
+    ]
+  },
+  "mixins": [
+    "bettercrafting.mixins.json",
+    {
+      "config": "bettercrafting.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

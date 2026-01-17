@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.apelsin.bettercrafting.client.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "CraftingTableMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
