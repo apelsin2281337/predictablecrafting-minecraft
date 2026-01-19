@@ -4,7 +4,8 @@
   "package": "org.apelsin.bettercrafting.client.mixins",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "CraftingTableMixin"
+    "CraftingTableSlotMixin",
+    "DrawContextMixin"
   ],
   "injectors": {
     "defaultRequire": 1
