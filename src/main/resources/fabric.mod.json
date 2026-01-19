@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "bettercrafting",
-  "version": "1.0",
+  "version": "1.0.1",
   "name": "Better Crafting",
   "description": "A simple mod making it easy to see how much items you are crafting.",
   "authors": ["apelsin"],
