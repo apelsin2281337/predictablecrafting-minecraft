@@ -1,4 +1,4 @@
-package org.apelsin.bettercrafting.client.mixins;
+package org.apelsin.predictablecrafting.client.mixins;
 
 
 import net.minecraft.client.MinecraftClient;
@@ -7,7 +7,6 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.item.ItemStack;
 import org.joml.Matrix3x2fStack;
 import org.jspecify.annotations.Nullable;
-import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -18,17 +17,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class DrawContextMixin {
     @Inject(method = "drawStackCount", at = @At("HEAD"), cancellable = true)
     private void customStackCount(TextRenderer textRenderer, ItemStack stack, int x, int y, @Nullable String stackCountText, CallbackInfo ci) {
+        MinecraftClient minecraftClient = MinecraftClient.getInstance();
         if (stack.getCount() != 1 || stackCountText != null) {
             String string = stackCountText == null ? String.valueOf(stack.getCount()) : stackCountText;
             DrawContext context = (DrawContext)(Object)this;
 
             context.drawText(textRenderer, string, x + 19 - 2 - textRenderer.getWidth(string), y + 6 + 3, -1, true);
 
-            long windowHandle = MinecraftClient.getInstance().getWindow().getHandle();
-            boolean shiftPressed = GLFW.glfwGetKey(windowHandle, GLFW.GLFW_KEY_LEFT_SHIFT) == GLFW.GLFW_PRESS ||
-                    GLFW.glfwGetKey(windowHandle, GLFW.GLFW_KEY_RIGHT_SHIFT) == GLFW.GLFW_PRESS;
 
-            if (shiftPressed && stack.getCount() > 64) {
+            if (minecraftClient.isShiftPressed() && stack.getCount() > 64) {
                 Matrix3x2fStack matrices = context.getMatrices();
                 matrices.pushMatrix();
 

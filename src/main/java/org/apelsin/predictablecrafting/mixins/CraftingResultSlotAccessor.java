@@ -1,4 +1,4 @@
-package org.apelsin.bettercrafting.mixins;
+package org.apelsin.predictablecrafting.mixins;
 
 import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.screen.slot.CraftingResultSlot;

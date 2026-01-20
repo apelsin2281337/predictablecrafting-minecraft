@@ -1,28 +1,28 @@
 {
   "schemaVersion": 1,
-  "id": "bettercrafting",
+  "id": "predictablecrafting",
   "version": "1.0.1",
-  "name": "Better Crafting",
-  "description": "A simple mod making it easy to see how much items you are crafting.",
+  "name": "Predictable Crafting",
+  "description": "A simple mod making it easy to see how much items you are actually crafting.",
   "authors": ["apelsin"],
   "license": "GPL-3.0",
-  "icon": "assets/bettercrafting/icon.png",
+  "icon": "assets/predictablecrafting/icon.png",
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
-      "org.apelsin.bettercrafting.client.BetterCraftingDataGenerator"
+      "org.apelsin.predictablecrafting.client.PredictableCraftingDataGenerator"
     ],
     "client": [
-      "org.apelsin.bettercrafting.client.BetterCraftingClient"
+      "org.apelsin.predictablecrafting.client.PredictableCraftingClient"
     ],
     "main": [
-      "org.apelsin.bettercrafting.BetterCrafting"
+      "org.apelsin.predictablecrafting.PredictableCrafting"
     ]
   },
   "mixins": [
-    "bettercrafting.mixins.json",
+    "predictablecrafting.mixins.json",
     {
-      "config": "bettercrafting.client.mixins.json",
+      "config": "predictablecrafting.client.mixins.json",
       "environment": "client"
     }
   ],

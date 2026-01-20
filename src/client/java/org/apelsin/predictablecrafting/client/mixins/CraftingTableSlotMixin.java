@@ -1,4 +1,4 @@
-package org.apelsin.bettercrafting.client.mixins;
+package org.apelsin.predictablecrafting.client.mixins;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -7,8 +7,7 @@ import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.slot.CraftingResultSlot;
 import net.minecraft.screen.slot.Slot;
-import org.apelsin.bettercrafting.mixins.CraftingResultSlotAccessor;
-import org.lwjgl.glfw.GLFW;
+import org.apelsin.predictablecrafting.mixins.CraftingResultSlotAccessor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -27,7 +26,10 @@ public class CraftingTableSlotMixin {
             cancellable = true
     )
     private void ShowMaximumCraftableAmount(CallbackInfoReturnable<ItemStack> cir){
-        if (!MinecraftClient.getInstance().isOnThread()) return;
+
+        MinecraftClient minecraftClient = MinecraftClient.getInstance();
+
+        if (!minecraftClient.isOnThread()) return;
         if (!((Object)this instanceof CraftingResultSlot)) {
             return;
         }
@@ -35,14 +37,11 @@ public class CraftingTableSlotMixin {
         CraftingResultSlot craftingSlot = (CraftingResultSlot)(Object)this;
 
         try {
-            long windowHandle = net.minecraft.client.MinecraftClient.getInstance().getWindow().getHandle();
-            boolean shiftPressed = GLFW.glfwGetKey(windowHandle, GLFW.GLFW_KEY_LEFT_SHIFT) == GLFW.GLFW_PRESS ||
-                    GLFW.glfwGetKey(windowHandle, GLFW.GLFW_KEY_RIGHT_SHIFT) == GLFW.GLFW_PRESS;
-
-            if (!shiftPressed) {
+            if (!minecraftClient.isShiftPressed()) {
                 return;
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             return;
         }
 

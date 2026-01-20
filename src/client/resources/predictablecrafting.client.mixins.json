@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "org.apelsin.bettercrafting.client.mixins",
+  "package": "org.apelsin.predictablecrafting.client.mixins",
   "compatibilityLevel": "JAVA_21",
   "client": [
     "CraftingTableSlotMixin",
