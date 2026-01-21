@@ -1,23 +1,29 @@
 {
   "schemaVersion": 1,
   "id": "predictablecrafting",
-  "version": "1.0.1",
+  "version": "1.2",
   "name": "Predictable Crafting",
   "description": "A simple mod making it easy to see how much items you are actually crafting.",
   "authors": ["apelsin"],
+  "contact": {
+    "sources": "https://github.com/apelsin2281337/predictablecrafting-minecraft",
+    "issues": "https://github.com/apelsin2281337/predictablecrafting-minecraft/issues",
+    "homepage": "https://github.com/apelsin2281337/predictablecrafting-minecraft"
+  },
   "license": "GPL-3.0",
   "icon": "assets/predictablecrafting/icon.png",
   "environment": "*",
   "entrypoints": {
-    "fabric-datagen": [
-      "org.apelsin.predictablecrafting.client.PredictableCraftingDataGenerator"
-    ],
     "client": [
       "org.apelsin.predictablecrafting.client.PredictableCraftingClient"
     ],
     "main": [
       "org.apelsin.predictablecrafting.PredictableCrafting"
+    ],
+    "modmenu": [
+      "org.apelsin.predictablecrafting.client.modmenu.ModMenuImplementation"
     ]
+
   },
   "mixins": [
     "predictablecrafting.mixins.json",
@@ -27,6 +33,8 @@
     }
   ],
   "depends": {
+    "yet_another_config_lib_v3": ">=3.8.2+1.21.11-fabric",
+    "modmenu": ">=17.0.0-beta.2",
     "fabricloader": ">=${loader_version}",
     "fabric-api": "*",
     "minecraft": "${minecraft_version}"

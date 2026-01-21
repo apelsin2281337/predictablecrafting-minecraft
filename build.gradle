@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.13.1'
+    id 'fabric-loom' version '1.14.9'
     id 'maven-publish'
 }
 
@@ -28,6 +28,14 @@ fabricApi {
 }
 
 repositories {
+    maven {
+        name 'Xander Maven'
+        url 'https://maven.isxander.dev/releases'
+    }
+    maven {
+        name = "Terraformers"
+        url = "https://maven.terraformersmc.com/"
+    }
     //maven { url = "https://api.modrinth.com/maven"}
     // Add repositories to retrieve artifacts from in here.
     // You should only use this when depending on other mods because
@@ -42,8 +50,8 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
-    //modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
+    modImplementation "dev.isxander:yet-another-config-lib:${project.yacl_version}"
+    modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 
 }
 
